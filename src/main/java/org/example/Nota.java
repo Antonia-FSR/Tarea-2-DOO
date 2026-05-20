@@ -11,6 +11,7 @@ public class Nota {
      * * @param contenido El texto que contendrá la nota.
      */
     public Nota(String contenido) {
+
         this.contenido = contenido;
     }
 
@@ -19,6 +20,7 @@ public class Nota {
      * * @return El texto de la nota.
      */
     public String getContenido() {
+
         return contenido;
     }
 
@@ -27,6 +29,7 @@ public class Nota {
      * * @param contenido El nuevo texto para la nota.
      */
     public void setContenido(String contenido) {
+
         this.contenido = contenido;
     }
 
