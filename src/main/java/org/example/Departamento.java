@@ -1,4 +1,6 @@
 package org.example;
+import java.util.List;
+import java.util.ArrayList;
 /**
  * Representa un departamento que puede ser invitadoa a la reunion
  * @author Antonia-FSR
@@ -6,13 +8,30 @@ package org.example;
 
 public class Departamento implements Invitable{
     private String nombre;
+    private List<Empleado> empleados;
     /**
      * Constructor para crear un nuevo departamento
      * @param nombre, el nombre del departamento
      */
     public Departamento(String nombre){
         this.nombre=nombre;
+        this.empleados= new ArrayList<>();
     }
+
+    public void agregarEmpleado(Empleado empleado) {
+        if (empleado != null) {
+            this.empleados.add(empleado);
+        }
+    }
+
+    public List<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public int obtenerCantidadEmpleados() {
+        return empleados.size();
+    }
+
     public void setNombre(String nombre){
         this.nombre=nombre;
     }
