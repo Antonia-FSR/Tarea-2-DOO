@@ -9,6 +9,7 @@ public class Empleado implements Invitable {
     private String apellidos;
     private String nombre;
     private String correo;
+    private Departamento departamento;
 
     /**
      * constructor para crear al empleado
@@ -56,6 +57,14 @@ public class Empleado implements Invitable {
         this.correo = correo;
     }
 
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+
     /**
      * implementacion del metodo de la interfaz Invitable
      */
@@ -70,6 +79,7 @@ public class Empleado implements Invitable {
      */
     @Override
     public String toString(){
-        return "Empleado [Id:"+id+"] |Nombre: "+nombre+", Apellidos: "+apellidos+", Correo: "+correo+".";
+        String nombreDepto = (departamento != null) ? departamento.getNombre() : "Sin departamento";
+        return "Empleado [Id:"+id+"] |Nombre: "+nombre+", Apellidos: "+apellidos+", Correo: "+correo+", Departamento: "+nombreDepto+".";
     }
 }
