@@ -120,7 +120,6 @@ class ReunionTest {
         Reunion reunion = new ReunionVirtual(new Date(), Instant.now(), Duration.ofMinutes(60), org, TipoReunion.TECNICA, "meet.com");
 
         reunion.generarInforme("informe.txt");
-
         File archivo = new File("informe.txt");
 
         assertTrue(archivo.exists());
