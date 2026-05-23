@@ -4,6 +4,9 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * Clase abstracta que representa la estructura y comportamiento de una reunion.
@@ -228,5 +231,68 @@ public abstract class Reunion {
         return false;
     }
 
+    /**
+
+     * Genera un informe completo de la reunión
+     * y lo guarda en un archivo txt.
+     *
+     * @param nombreArchivo nombre del archivo txt.
+     */
+    public void generarInforme(String nombreArchivo) {
+
+        try (PrintWriter writer = new PrintWriter(new FileWriter(nombreArchivo))) {
+            writer.println("INFORME DE REUNION");
+
+            writer.println("Fecha: " + fecha);
+
+            writer.println("Tipo reunión: " + tipoReunion);
+
+            writer.println("Organizador: " + organizador.getNombre() + " " + organizador.getApellidos());
+
+            writer.println("Hora prevista: " + horaPrevista);
+
+            writer.println("Hora inicio: " + horaInicio);
+
+            writer.println("Hora fin: " + horaFin);
+
+            writer.println("Duración real: " + calcularTiempoReal() + " minutos");
+
+            writer.println();
+
+            writer.println("ASISTENTES");
+
+            for (Asistencia asis : asistencias) {writer.println(asis.toString());}
+
+            writer.println();
+
+            writer.println("AUSENTES");
+
+            for (Invitable ausente : obtenerAusencias()) {writer.println(ausente.toString());}
+
+            writer.println();
+
+            writer.println("RETRASOS");
+
+            for (Retraso retraso : obtenerRetrasos()) {writer.println(retraso.toString());}
+
+            writer.println();
+
+            writer.println("NOTAS");
+
+            for (Nota nota : notas) {writer.println(nota.toString());}
+
+            writer.println();
+
+            System.out.println("Informe generado correctamente.");
+
+        }
+
+        catch (IOException e) {
+
+            System.out.println("Error al generar informe: " + e.getMessage()
+            );
+            
+        }
+    }
 
 }

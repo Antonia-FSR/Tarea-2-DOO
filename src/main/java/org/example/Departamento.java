@@ -52,6 +52,6 @@ public class Departamento implements Invitable{
      */
     @Override
     public String toString(){
-        return "Departamento: "+nombre;
+        return "Departamento: "+nombre+ " | Cantidad empleados: "+empleados.size();
     }
 }

@@ -3,6 +3,7 @@ package org.example;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.File;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
@@ -111,5 +112,17 @@ class ReunionTest {
         assertEquals(1, ausencias.size());
 
         assertEquals("51", ((Empleado) ausencias.get(0)).getId()); //Verificamos que sea el empleado correcto
+    }
+
+    @Test
+    void testGenerarInforme() {
+        Empleado org = new Empleado("1", "Perez", "Juan", "juan@empresa.com");
+        Reunion reunion = new ReunionVirtual(new Date(), Instant.now(), Duration.ofMinutes(60), org, TipoReunion.TECNICA, "meet.com");
+
+        reunion.generarInforme("informe.txt");
+
+        File archivo = new File("informe.txt");
+
+        assertTrue(archivo.exists());
     }
 }

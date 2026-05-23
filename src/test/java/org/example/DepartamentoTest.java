@@ -20,7 +20,7 @@ class DepartamentoTest {
     }
     @Test
     void testToString(){
-        // se prueba que<LAinformacion al imprimor coincide
+        // se prueba que la informacion al imprimir coincide
         Departamento depto = new Departamento("Recursos Humanos");
         String resultado = depto.toString();
         assertTrue(resultado.contains("Recursos Humanos"));
