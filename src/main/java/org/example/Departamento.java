@@ -21,6 +21,7 @@ public class Departamento implements Invitable{
     public void agregarEmpleado(Empleado empleado) {
         if (empleado != null) {
             this.empleados.add(empleado);
+            empleado.setDepartamento(this);
         }
     }
 

@@ -40,5 +40,34 @@ class EmpleadoTest {
         assertTrue(resultado.contains("Gomez"));
         assertTrue(resultado.contains("Ana.Gomez@empresa.com"));
     }
+    @Test
+    void testDepartamentoEmpleado() {
+        // se prueba que el departamento asignado al empleado se guarde correctamente
+        Departamento depto = new Departamento("Informatica");
+        Empleado emp = new Empleado("11", "Perez", "Juan", "juan@empresa.com");
+        emp.setDepartamento(depto);
+
+        assertEquals("Informatica", emp.getDepartamento().getNombre());
+    }
+    @Test
+    void testToStringConDepartamento() {
+        // se prueba que el toString incluya el nombre del departamento
+        Departamento depto = new Departamento("Marketing");
+        Empleado emp = new Empleado("33", "Lopez", "Maria", "maria@empresa.com");
+        emp.setDepartamento(depto);
+
+        String resultado = emp.toString();
+
+        assertTrue(resultado.contains("Marketing"));
+    }
+    @Test
+    void testToStringSinDepartamento() {
+        // se prueba que el toString muestre "Sin departamento" cuando no exista uno asignado
+        Empleado emp = new Empleado("44", "Diaz", "Pedro", "pedro@empresa.com");
+
+        String resultado = emp.toString();
+
+        assertTrue(resultado.contains("Sin departamento"));
+    }
 
 }
